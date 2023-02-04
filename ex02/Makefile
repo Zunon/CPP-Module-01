@@ -1,5 +1,5 @@
 NAME	= brains
-SRCS	= main.cpp Zombie.cpp zombieHorde.cpp
+SRCS	= main.cpp
 OBJS	= $(SRCS:.cpp=.o)
 CC		= c++
 CFLAGS	= -std=c++98 -Wall -Wextra -Werror
