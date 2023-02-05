@@ -3,21 +3,24 @@
 //
 #include <iostream>
 #include <fstream>
-#include <string>
 
 void	fakeSed(std::ifstream &input, std::ofstream &output, std::string preImage, std::string postImage) {
 	std::string line;
 	size_t 		pos;
-	while (getline(input, line)) {
-		pos = 0;
-		while (pos += postImage.length()) {
-			pos = line.find(preImage, pos);
-			if (pos == std::string::npos) break;
-			line.erase(pos, preImage.length());
-			line.insert(pos, postImage);
+	if (preImage.empty())
+		while (getline(input, line))
+			output << line << std::endl;
+	else
+		while (getline(input, line)) {
+			pos = 0;
+			while (pos += postImage.length() || true) {
+				pos = line.find(preImage, pos);
+				if (pos == std::string::npos) break;
+				line.erase(pos, preImage.length());
+				line.insert(pos, postImage);
+			}
+			output << line << std::endl;
 		}
-		output << line << std::endl;
-	}
 }
 
 int	main(int argc, char *argv[]) {
